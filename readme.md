@@ -15,9 +15,10 @@ With *Your Spot*, you will be able to better connect with your music. It will sh
 
 # User Stories
 * The user will be able to see the their top tracks and artists that they played on Spotify. 
+* The user will be able to listen to songs on the page.
 * The user will be able to see the lyrics of their favorite songs.
 * The user will be able to make playlists based off an artist.
-* The user will be able to make playlists based off agenre.
+* The user will be able to make playlists based off a genre.
 
 
 <!-- # Getting Started -->
