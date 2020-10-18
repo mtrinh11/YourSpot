@@ -5,12 +5,12 @@
 
 # Contact
 https://www.linkedin.com/in/m-trinh/  
-mtrinh11@gmailcom
+mtrinh11@gmail.com
 
 
 # Description
-Developed using vanilla JS, HTML, CSS, and the Spotify API.
- Your Spot, you will be able to better connect with your music. It will show you were you have been on your listening journey. With a view on your past it will also help you curate playlists of things you want to explore! Based on your journey, it will help you explore related artists and genres.
+Developed using vanilla JS, HTML, CSS, and the Spotify API.  
+Your Spot, you will be able to better connect with your music. It will show you were you have been on your listening journey. With a view on your past it will also help you curate playlists of things you want to explore! Based on your journey, it will help you explore related artists and genres.
 
 
 # User Stories
