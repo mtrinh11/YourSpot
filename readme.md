@@ -1,5 +1,5 @@
 
-# Your Spot
+# YourSpot
  By Minh Trinh | October 19, 2020  
 
 
@@ -10,7 +10,7 @@ mtrinh11@gmail.com
 
 # Description
 Developed using vanilla JS, HTML, CSS, and the Spotify API.  
-With *Your Spot*, you will be able to better connect with your music. It will show you were you have been on your listening journey. Using your listening history, it will help you curate playlists of things you want to explore! Based on your journey, it will help you explore related artists and genres.
+With *YourSpot*, you will be able to better connect with your music. It will show you were you have been on your listening journey. Using your listening history, it will help you curate playlists of things you want to explore! Based on your journey, it will help you explore related artists and genres.
 
 
 # User Stories
