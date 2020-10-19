@@ -9,20 +9,19 @@ mtrinh11@gmail.com
 
 
 # Description
-Developed using vanilla JS, HTML, CSS, and the Spotify API.  
-With *YourSpot*, you will be able to better connect with your music. It will show you were you have been on your listening journey. Using your listening history, it will help you curate playlists of things you want to explore! Based on your journey, it will help you explore related artists and genres.
+Developed using vanilla JS, HTML, CSS, and the Last.fm API.  
+With *YourSpot*, you will be able to better connect with  music. It will show you the top Artists, Tags, and Tracks based off Last.fm's data.
 
 
 # User Stories
-* The user will be able to see the their top tracks and artists that they played on Spotify. 
-* The user will be able to listen to songs on the page.
-* The user will be able to see the lyrics of their favorite songs.
+* The user will be able to see the top tracks, tags, and artists based off the Last.fm database/
 * The user will be able to make playlists based off an artist.
 * The user will be able to make playlists based off a genre.
 
 
-<!-- # Getting Started -->
-
+# Getting Started
+Please have axios installed 
 
 # Credits
-https://developer.spotify.com/documentation/web-api/
+https://www.last.fm/api
+https://unsplash.com/photos/Xaanw0s0pMk - Used for the nav background image

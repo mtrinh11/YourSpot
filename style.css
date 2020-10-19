@@ -1,5 +1,72 @@
-body {
+html, body{
+    height: 100%;
+}
 
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 70px 1fr;
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    background-color: #F9F1F3;
+}
+
+nav {
+    grid-column-end: span 2;
+    background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+    background-size: stretch;
+    font-weight: 800;
+}
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+}
+nav ul li {
+    display: inline;
+    margin: 10px 50px 10px 10px;
+    cursor: pointer;
+}
+nav ul li:first-child {
+    position: left;
+    width: 80%;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    background-color: #C3DFE0;
+}
+
+header div {
+    margin: 30px 0;
+    cursor: pointer;
+}
+header div:first-child {
+    margin-top: 75px;
+}
+
+main {
+    margin: 20px;
+}
+
+main div .artist {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+}
+
+main div .artist .num {
+    margin:20px;
+    width: 10px;
+}
+
+main div .artist .stats {
+    margin:15px;
+    width: 200px;
 }
 
 h1 {
