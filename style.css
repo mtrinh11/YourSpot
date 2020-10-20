@@ -38,6 +38,7 @@ header {
     background-color: white;
     align-items: center;
     background-color: #C3DFE0;
+    min-width: 170px;
 }
 
 header div {
@@ -50,25 +51,47 @@ header div:first-child {
 
 main {
     margin: 20px;
+    text-align: center;
 }
 
-main div .artist {
+main div .rank {
    display: flex;
    flex-direction: row;
    justify-content: flex-start;
    align-items: center;
+   flex-grow: 1;
 }
 
-main div .artist .num {
+main div .rank .num {
     margin:20px;
     width: 10px;
 }
 
-main div .artist .stats {
+main div .rank .stats {
     margin:15px;
     width: 200px;
 }
 
+main div .rank .name {
+    margin:15px;
+    width: 100px;
+    flex-grow: 1;
+}
+
+main div .rank .artist {
+    margin:15px;
+    width: 85px;
+    flex-grow: 1;
+}
+
 h1 {
     color:blue;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+
+select {
+    text-align: left;
 }
