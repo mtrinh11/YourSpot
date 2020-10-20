@@ -4,12 +4,16 @@ const LASTFM_BASE_URL = ' http://ws.audioscrobbler.com/2.0/';
 const LASTFM_API_KEY = '';
 const LASTFM_SECRET = '';
 
+//add a show more button?
 const getTopArtists = async() => {
-    try{
-        let response = await axios.get(`${LASTFM_BASE_URL}?method=chart.gettopartists&api_key=${LASTFM_API_KEY}&format=json`);
-        let selectButton = 
-        console.log(response)
-        addToDiv(response.data.artists.artist.sort(function (a, b) {
+    try {
+        let response = await axios.get(`${LASTFM_BASE_URL}?method=chart.gettopartists&page=1&api_key=${LASTFM_API_KEY}&format=json`);
+        // let selectButton = 
+        // console.log(response)
+        //add sort by playcount or listiners button?
+        let artistArray = response.data.artists.artist;
+        clearMainScreen();
+        addArtistsToDiv(artistArray.sort(function (a, b) {
             return b.playcount - a.playcount;
           }), document.querySelector('.list'))
     } catch (err) {
@@ -17,8 +21,28 @@ const getTopArtists = async() => {
     };
 };
 
+const getTopTags = async() => {
+    try {
+        let response = await axios.get(`${LASTFM_BASE_URL}?method=chart.gettoptags&page=1&api_key=${LASTFM_API_KEY}&format=json`);
+        let tagArray = response.data.tags.tag
+        clearMainScreen();
+        // console.log(tagArray)
+    } catch (err) {
+        console.log(err);
+    }
+}
 
-function addToDiv(arrayOfArtists, theDivAddedTo) {
+const getTopTracks = async() => {
+    try {
+        let response = await axios.get(`${LASTFM_BASE_URL}?method=chart.gettoptracks&page=1&api_key=${LASTFM_API_KEY}&format=json`);
+        let tracksArray = response.data.tracks.track;
+        clearMainScreen();
+        console.log(tracksArray)
+    } catch (err) {
+        console.log(err);
+    }
+}
+function addArtistsToDiv(arrayOfArtists, theDivAddedTo) {
     counter = 1;
     for (item of arrayOfArtists){
         let newItem = document.createElement('div');
@@ -55,5 +79,5 @@ function clearMainScreen() {
 }
 
 document.querySelector('#topArtists').addEventListener('click', getTopArtists);
-document.querySelector('#topTags').addEventListener('click', clearMainScreen);
-// document.querySelector('#topTracks').addEventListener('click', )
+document.querySelector('#topTags').addEventListener('click', getTopTags);
+document.querySelector('#topTracks').addEventListener('click', getTopTracks);
