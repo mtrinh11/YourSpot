@@ -1,10 +1,7 @@
-// const { transcode } = require("buffer");
-
 
 const LASTFM_BASE_URL = ' http://ws.audioscrobbler.com/2.0/';
 
 const LASTFM_API_KEY = '';
-const LASTFM_SECRET = '';
 
 let pages = 1;
 
@@ -16,7 +13,6 @@ const getTopArtists = async(e) => {
             artistArray = [...artistArray, ...response.data.artists.artist];
         }
         artistArray = removeDuplicates(artistArray);
-        console.log(artistArray)
         clearMainScreen();
         showListDiv = document.querySelector('.list');
         addSelectButton(['Sort By','Sort By Playcount', 'Sort By Listeners'], showListDiv).addEventListener('change',function(e){getTopArtists(e);});
@@ -59,7 +55,6 @@ const getTopTracks = async(e) => {
             tracksArray = [...tracksArray, ...response.data.tracks.track]
         }
         tracksArray = removeDuplicates(tracksArray);
-        console.log(tracksArray);
         clearMainScreen();
         showListDiv = document.querySelector('.list');
         addSelectButton(['Sort By', 'Sort By Playcount', 'Sort By Listeners'], showListDiv).addEventListener('change',
