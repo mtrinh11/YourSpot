@@ -26,6 +26,8 @@ const getTopArtists = async(e) => {
         showMoreButton(showListDiv).addEventListener('click', function(){pages++; getTopArtists(e)})
     } catch (err) {
         console.log(err);
+        clearMainScreen();
+        displayError(err);
     };
 };
 
@@ -44,6 +46,8 @@ const getTopTags = async(e) => {
         }
     } catch (err) {
         console.log(err);
+        clearMainScreen();
+        displayError(err);
     }
 }
 
@@ -67,6 +71,8 @@ const getTopTracks = async(e) => {
         showMoreButton(showListDiv).addEventListener('click', function(){pages++; getTopTracks(e)})
     } catch (err) {
         console.log(err);
+        clearMainScreen();
+        displayError(err);
     }
 }
 function addTopArtistsToDiv(arrayOfArtists, theDivAddedTo, sortBy) {
@@ -156,6 +162,13 @@ function addTopTracksToDiv (arrayOfTracks, theDivToAddTo, sortBy) {
         newItem.appendChild(stats);
         theDivToAddTo.appendChild(newItem);
     }
+}
+
+function displayError(err) {
+    let message = document.createElement('p');
+    message.innerText = `Oh No! We have a ${err.name}. Check your connection.`
+    
+    document.querySelector('.list').appendChild(message);
 }
 
 function clearMainScreen() {

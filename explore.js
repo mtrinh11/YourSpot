@@ -12,12 +12,15 @@ const searchArtistsPopUp = () => {
 const searchFieldforArtists = (div, placeholderText) => {
     let newDiv = document.createElement('div');
     let searchField = document.createElement('input');
+    let description = document.createElement('p');
 
     searchField.type = 'search';
     searchField.placeholder = placeholderText;
     searchField.style.width = '300px';
     searchField.style.margin = '10px';
+    description.innerText = 'Enter the artist below. Similar artists will appear below! Press enter when you are ready!';
 
+    div.appendChild(description);
     newDiv.appendChild(searchField);
     div.appendChild(newDiv);
     return searchField;
@@ -32,7 +35,6 @@ const getSimilarArtists = async(e) => {
             let resultsArray = response.data.similarartists.artist;
             displayArtistResults(resultsArray);
         } catch (err) {
-            //have to address if no results are return aka artist is undefined
             console.log(err)
             displayError(err)
         }
@@ -63,6 +65,7 @@ const searchFieldForTracks = () => {
     let titleField = document.createElement('input');
     let artistField = document.createElement('input');
     let submit = document.createElement('button');
+    let description = document.createElement('p');
 
     titleField.type = 'search';
     titleField.placeholder = `What's the name of the song?`;
@@ -76,7 +79,9 @@ const searchFieldForTracks = () => {
     submit.innerText = 'Search';
     submit.addEventListener('click', getSimilarTracks);
     submit.style.margin = '10px';
+    description.innerText = 'Enter the song name and artist below and similar songs will show below! Make sure your spelling is right and click "Search" when you are ready!';
 
+    document.querySelector('.list').appendChild(description);
     newDiv.appendChild(titleField);
     newDiv.appendChild(artistField);
     newDiv.appendChild(submit);
