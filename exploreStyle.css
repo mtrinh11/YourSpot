@@ -63,21 +63,16 @@ main div .rank {
    flex-grow: 1;
 }
 
-main div .rank .num {
+main div .rank .percentage {
     margin:20px;
-    width: 10px;
+    width: 100px;
 }
 
-main div .rank .stats {
-    margin:15px;
+main div .rank .song {
+    margin:20px;
     width: 200px;
 }
 
-main div .rank .name {
-    margin:15px;
-    width: 100px;
-    flex-grow: 1;
-}
 
 main div .rank .artist {
     margin:15px;

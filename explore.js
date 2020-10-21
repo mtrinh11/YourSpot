@@ -18,7 +18,7 @@ const searchFieldforArtists = (div, placeholderText) => {
     searchField.placeholder = placeholderText;
     searchField.style.width = '300px';
     searchField.style.margin = '10px';
-    description.innerText = 'Enter the artist below. Similar artists will appear below! Press enter when you are ready!';
+    description.innerText = 'Enter the artist below. Similar artists will appear below with a match percentage! Press enter when you are ready!';
 
     div.appendChild(description);
     newDiv.appendChild(searchField);
@@ -33,6 +33,7 @@ const getSimilarArtists = async(e) => {
             let response = await axios.get(`${LASTFM_BASE_URL}?method=artist.getsimilar&artist=${artist}&api_key=${LASTFM_API_KEY}&format=json`);
             console.log(response);
             let resultsArray = response.data.similarartists.artist;
+            clearMainScreenExeceptFirstNChildren(2);
             displayArtistResults(resultsArray);
         } catch (err) {
             console.log(err)
@@ -43,12 +44,17 @@ const getSimilarArtists = async(e) => {
 
 const displayArtistResults = (arr) => {
     for (let artist of arr) {
-        //have Text that says Search Results For:....
         let newDiv = document.createElement('div');
         let name = document.createElement('p');
+        let rating = document.createElement('p');
 
+        newDiv.classList.add('rank');
+        rating.classList.add('percentage');
+        name.classList.add('artist');
         name.innerText = `${artist.name}`;
+        rating.innerText = `${(parseFloat(artist.match)*100).toFixed(2)}%`;
 
+        newDiv.appendChild(rating);
         newDiv.appendChild(name);
         document.querySelector('.list').appendChild(newDiv);
     }
@@ -79,7 +85,7 @@ const searchFieldForTracks = () => {
     submit.innerText = 'Search';
     submit.addEventListener('click', getSimilarTracks);
     submit.style.margin = '10px';
-    description.innerText = 'Enter the song name and artist below and similar songs will show below! Make sure your spelling is right and click "Search" when you are ready!';
+    description.innerText = 'Enter the song name and artist below and similar songs will show below with a match percentage! Make sure your spelling is right and click "Search" when you are ready!';
 
     document.querySelector('.list').appendChild(description);
     newDiv.appendChild(titleField);
@@ -97,13 +103,17 @@ const displayTrackResults = (arr) => {
         let ranking = document.createElement('p');
 
         newDiv.classList.add('rank');
+        ranking.classList.add('percentage');
+        artist.classList.add('artist');
+        songName.classList.add('song');
+
         songName.innerText = `${item.name}`;
         artist.innerText = `${item.artist.name}`;
-        ranking.innerText =`${item.match * 100}%`;
-
+        ranking.innerText =`${(parseFloat(item.match)*100).toFixed(2)}%`;
+        
+        newDiv.appendChild(ranking);
         newDiv.appendChild(songName);
         newDiv.appendChild(artist);
-        newDiv.appendChild(ranking);
         document.querySelector('.list').appendChild(newDiv);
     };
 }
@@ -115,7 +125,7 @@ const getSimilarTracks = async() => {
         let response = await axios.get(`${LASTFM_BASE_URL}?method=track.getsimilar&artist=${artist}&track=${track}&api_key=${LASTFM_API_KEY}&format=json`);
         console.log(response);
         let resultsArray = response.data.similartracks.track;
-        console.log(resultsArray)
+        clearMainScreenExeceptFirstNChildren(2);
         displayTrackResults(resultsArray);
     } catch (err) {
         displayError(err)

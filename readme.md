@@ -14,9 +14,9 @@ With *YourSpot*, you will be able to better connect with  music. It will show yo
 
 
 # User Stories
-* The user will be able to see the top tracks, tags, and artists based off the Last.fm database/
-* The user will be able to make playlists based off an artist.
-* The user will be able to make playlists based off a genre.
+* The user will be able to see the top tracks, tags, and artists based off the Last.fm database.
+* The user will be able to explore related artists based off an artist.
+* The user will be able to make a playlist of similar songs based off a song.
 
 
 # Getting Started
