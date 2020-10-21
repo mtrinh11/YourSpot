@@ -5,23 +5,28 @@ const LASTFM_API_KEY = '';
 
 const searchArtistsPopUp = () => {
     showListDiv = document.querySelector('.list');
+    clearMainScreen();
     searchFieldforArtists(showListDiv, 'Search for Artists Related to...').addEventListener('keypress', function(e){getSimilarArtists(e)});
 }
 
 const searchFieldforArtists = (div, placeholderText) => {
+    let newDiv = document.createElement('div');
     let searchField = document.createElement('input');
+
     searchField.type = 'search';
     searchField.placeholder = placeholderText;
     searchField.style.width = '300px';
+    searchField.style.margin = '10px';
 
-    div.appendChild(searchField);
+    newDiv.appendChild(searchField);
+    div.appendChild(newDiv);
     return searchField;
 }
 
 const getSimilarArtists = async(e) => {
     if (e.key === 'Enter'){
         try {
-            let artist = e.target.value;
+            let artist = e.target.value.trim();
             let response = await axios.get(`${LASTFM_BASE_URL}?method=artist.getsimilar&artist=${artist}&api_key=${LASTFM_API_KEY}&format=json`);
             console.log(response);
             let resultsArray = response.data.similarartists.artist;
@@ -29,7 +34,7 @@ const getSimilarArtists = async(e) => {
         } catch (err) {
             //have to address if no results are return aka artist is undefined
             console.log(err)
-            console.log('uhoh no results')
+            displayError(err)
         }
     }
 }
@@ -49,6 +54,7 @@ const displayArtistResults = (arr) => {
 
 const searchTracksPopUp = async() => {
     showListDiv = document.querySelector('.list');
+    clearMainScreen();
     searchFieldForTracks();
 }
 
@@ -60,7 +66,7 @@ const searchFieldForTracks = () => {
 
     titleField.type = 'search';
     titleField.placeholder = `What's the name of the song?`;
-    titleField.style.width = '300px';
+    titleField.style.width = '240px';
     titleField.style.margin = '10px';
     titleField.id = 'trackTitle';
     artistField.type = 'search';
@@ -99,18 +105,24 @@ const displayTrackResults = (arr) => {
 
 const getSimilarTracks = async() => {
     try {
-        let track = document.querySelector('#trackTitle').value;
-        let artist = document.querySelector('#trackByArtist').value;
+        let track = document.querySelector('#trackTitle').value.trim();
+        let artist = document.querySelector('#trackByArtist').value.trim();
         let response = await axios.get(`${LASTFM_BASE_URL}?method=track.getsimilar&artist=${artist}&track=${track}&api_key=${LASTFM_API_KEY}&format=json`);
-        console.log(track, artist);
         console.log(response);
         let resultsArray = response.data.similartracks.track;
         console.log(resultsArray)
         displayTrackResults(resultsArray);
     } catch (err) {
-        //have to catch error if no results are returned
+        displayError(err)
         console.log(err)
     }
+}
+
+function displayError(err) {
+    let message = document.createElement('p');
+    message.innerText = `Oh No! We have a ${err.name}. Check the spelling of your search.`
+    
+    document.querySelector('.list').appendChild(message);
 }
 
 function clearMainScreen() {
